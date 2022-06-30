@@ -1,0 +1,2 @@
+[28-Mar-2022 07:37:15 UTC] PHP Fatal error:  Interface 'App\Exports\WithHeadings' not found in /home/mokogrou/laporan.mokogroup.id/app/Exports/LaporanExport.php on line 8
+[31-May-2022 04:40:18 UTC] PHP Fatal error:  Cannot use DB as DB because the name is already in use in /home/mokogrou/laporan.mokogroup.id/app/Http/Controllers/DetailController.php on line 15
