@@ -9,11 +9,19 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Customer extends Model
 {
-    use HasFactory, HasRoles, Notifiable;
+    use HasFactory;
+    use HasRoles;
+    use Notifiable;
 
     protected $fillable = [
         'name',
         'no_wa',
         'orign',
+        'created_by',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'created_by');
+    }
 }

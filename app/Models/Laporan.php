@@ -9,7 +9,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Laporan extends Model
 {
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory;
+    use Notifiable;
+    use HasRoles;
 
     protected $fillable = [
         'date',
@@ -21,11 +23,16 @@ class Laporan extends Model
         'qty',
         'order',
         'description',
-        'created_by'
+        'created_by',
     ];
 
     public function customer()
     {
         return $this->belongsTo('App\Models\Customer', 'id_customer');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'created_by');
     }
 }

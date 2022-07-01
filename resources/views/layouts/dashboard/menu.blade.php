@@ -16,7 +16,8 @@
         @can('menu-user')
             @if (Auth::user()->id == 1)
                 <li class="nav-item">
-                    <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('detail') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.index') }}"
+                        class="nav-link {{ Request::is('detail') ? 'active' : '' }}">
                         <i class="fas fa-th-large nav-icon"></i>
                         <p>Dashboard</p>
                     </a>
@@ -73,52 +74,53 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Detail Laporan Penjualan Per Tanggal</p>
                             </a>
+                            <a href="{{ route('detailcust') }}"
+                                class="nav-link {{ Request::is('master/month-reports') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Customer</p>
+                            </a>
                         </li>
                     </ul>
                 </li>
             @endif
-            <li class="nav-item">
-                <a href="{{ route('master.index') }}" class="nav-link {{ Request::is('detail') ? 'active' : '' }}">
-                    <i class="fas fa-tasks nav-icon"></i>
-                    <p>Laporan Penjualan Marketing</p>
-                </a>
-            </li>
-
-
-            <li class="nav-item">
-                <a href="{{ route('detailbln') }}"
-                    class="nav-link {{ Request::is('master/month-reports') ? 'active' : '' }}">
-                    <i class="fas fa-calendar-week nav-icon"></i>
-                    <p>Detail Laporan Penjualan Per Bulan</p>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ route('detailthn') }}"
-                    class="nav-link {{ Request::is('master/month-reports') ? 'active' : '' }}">
-                    <i class="fas fa-calendar-day nav-icon"></i>
-                    <p>Detail Laporan Penjualan Per Tahun</p>
-                </a>
-            </li>
-
-
-            <li class="nav-item">
-                <a href="{{ route('laporan.index') }}" class="nav-link {{ Request::is('laporan') ? 'active' : '' }}">
-                    <i class="fas fa-store nav-icon"></i>
-                    <p>Tambah Laporan Penjualan</p>
-                </a>
-            </li>
-
-
-            <li class="nav-item">
-                {{-- <a href="{{route('customers.index')}}" class="nav-link {{ Request::is('menu/customers') ? 'active' : '' }}"> --}}
-                <a href="{{ route('customer.index') }}"
-                    class="nav-link {{ Request::is('customer') ? 'active' : '' }}">
-                    <i class="fas fa-user-friends nav-icon"></i>
-                    <p>Tambah Customer</p>
-                </a>
-            </li>
-
+            @if (Auth::user()->id != 1)
+                <li class="nav-item">
+                    <a href="{{ route('master.index') }}"
+                        class="nav-link {{ Request::is('detail') ? 'active' : '' }}">
+                        <i class="fas fa-tasks nav-icon"></i>
+                        <p>Laporan Penjualan Marketing</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('detailbln') }}"
+                        class="nav-link {{ Request::is('master/month-reports') ? 'active' : '' }}">
+                        <i class="fas fa-calendar-week nav-icon"></i>
+                        <p>Detail Laporan Penjualan Per Bulan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('detailthn') }}"
+                        class="nav-link {{ Request::is('master/month-reports') ? 'active' : '' }}">
+                        <i class="fas fa-calendar-day nav-icon"></i>
+                        <p>Detail Laporan Penjualan Per Tahun</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('laporan.index') }}"
+                        class="nav-link {{ Request::is('laporan') ? 'active' : '' }}">
+                        <i class="fas fa-store nav-icon"></i>
+                        <p>Tambah Laporan Penjualan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    {{-- <a href="{{route('customers.index')}}" class="nav-link {{ Request::is('menu/customers') ? 'active' : '' }}"> --}}
+                    <a href="{{ route('customer.index') }}"
+                        class="nav-link {{ Request::is('customer') ? 'active' : '' }}">
+                        <i class="fas fa-user-friends nav-icon"></i>
+                        <p>Tambah Customer</p>
+                    </a>
+                </li>
+            @endif
         @endcan
     </ul>
 </nav>

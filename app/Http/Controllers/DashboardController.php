@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Laporan;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -16,9 +17,11 @@ class DashboardController extends Controller
         $bulan = Carbon::now()->format('m');
         $hari = Carbon::now()->format('d');
         $local = Carbon::now()->format('l');
+        $tahun = Carbon::now()->format('Y');
         // dd($bulan);
 
-        $customer_counts = Laporan::count();
+        $lead_counts = Laporan::count();
+        $customer_counts = Customer::count();
         $customer_M_counts = Laporan::whereMonth('date', $bulan)->count();
         $customer_d_counts = Laporan::whereMonth('date', $bulan)->whereDay('date', $hari)->count();
         $reports = Laporan::join('customers', 'laporans.id_customer', '=', 'customers.id')
@@ -66,8 +69,10 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('customer_counts',
         'customer_M_counts',
         'customer_d_counts',
+        'lead_counts',
         'i_bulan',
         'hari',
+        'tahun',
         'reports',
         's_bulan',
         'chart_vira',

@@ -22,10 +22,26 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Jumlah Customer Tanggal {{ $hari }} {{ $i_bulan }}
+                                    <h2 class="card-title">Total Lead
+                                    </h2>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <a class="btn btn-lg btn-icon waves-effect waves-light btn-danger">
+                                        <i class="fas fa-sticky-note nav-icon "></i>
+                                    </a>
+                                    <h4 class="font-weight-normal pt-2 mb-1 float-md-right">{{ $lead_counts }}</h4>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Jumlah Customer Tanggal {{ $hari }} {{ $i_bulan }} {{ $tahun }}
                                     </h2>
                                 </div>
                                 <!-- /.card-header -->
@@ -38,7 +54,7 @@
                                 <!-- /.card-body -->
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Jumlah Customer Bulan {{ $i_bulan }}</h2>
@@ -53,7 +69,7 @@
                                 <!-- /.card-body -->
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Total Customer</h2>
@@ -68,17 +84,17 @@
                                 <!-- /.card-body -->
                             </div>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-3">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Grafik Total Lead</h2>
+                                    <h2 class="card-title">Grafik Total Keseluruhan Lead</h2>
                                 </div>
                                 <div class="card-body">
                                     <div id="chart"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Grafik Total Lead Bulan {{ $i_bulan }}</h2>
@@ -101,7 +117,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Data Leads</h2>
+                                    <h2 class="card-title">Data Leads Bulan {{ $i_bulan }}</h2>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -284,7 +300,7 @@
                 data: {!! $chart_p_bulan_vira !!},
             }, {
                 name: {!! $chart_luluk !!},
-                data: {!! $chart_p_bulan_luluk !!},
+                data: {!! $chart_p_bulan_luluk !!} ,
             }],
             chart: {
                 type: 'bar',

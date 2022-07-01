@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth', 'dontback']], function () {
     route::get('detailbln/{detail}', [App\Http\Controllers\DetailController::class, 'showbln'])->name('detailbln.show');
     route::get('detailthn', [App\Http\Controllers\DetailController::class, 'indexthn'])->name('detailthn');
     route::get('detailthn/{detail}', [App\Http\Controllers\DetailController::class, 'showthn'])->name('detailthn.show');
+    route::get('detailcust', [App\Http\Controllers\DetailController::class, 'indexcust'])->name('detailcust');
     route::get('export', [App\Http\Controllers\LaporanController::class, 'export_excel'])->name('export');
     route::get('export_bulanan/{detail}', [App\Http\Controllers\DetailController::class, 'export_excel_bulanan'])->name('export_bulanan');
     route::get('export_tahunan/{detail}', [App\Http\Controllers\DetailController::class, 'export_excel_tahunan'])->name('export_tahunan');
