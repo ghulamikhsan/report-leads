@@ -601,6 +601,8 @@ class ComposerStaticInitbc2eaf3a05085d5217a18266fef771f5
     );
 
     public static $classMap = array (
+        'App\\Charts\\MonthlyUsersChart' => __DIR__ . '/../..' . '/app/Charts/MonthlyUsersChart.php',
+        'App\\Console\\Commands\\ChartMakeCommand' => __DIR__ . '/../..' . '/app/Console/Commands/ChartMakeCommand.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exports\\LaporanBulananExport' => __DIR__ . '/../..' . '/app/Exports/LaporanBulananExport.php',
@@ -638,6 +640,7 @@ class ComposerStaticInitbc2eaf3a05085d5217a18266fef771f5
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\bulan' => __DIR__ . '/../..' . '/app/Models/bulan.php',
         'App\\Models\\detail' => __DIR__ . '/../..' . '/app/Models/detail.php',
+        'App\\Models\\keterangan' => __DIR__ . '/../..' . '/app/Models/keterangan.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -651,7 +654,6 @@ class ComposerStaticInitbc2eaf3a05085d5217a18266fef771f5
         'ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart' => __DIR__ . '/..' . '/arielmejiadev/larapex-charts/src/Facades/LarapexChart.php',
         'ArielMejiaDev\\LarapexCharts\\HeatMapChart' => __DIR__ . '/..' . '/arielmejiadev/larapex-charts/src/HeatMapChart.php',
         'ArielMejiaDev\\LarapexCharts\\HorizontalBar' => __DIR__ . '/..' . '/arielmejiadev/larapex-charts/src/HorizontalBar.php',
-        'ArielMejiaDev\\LarapexCharts\\LarapexChart' => __DIR__ . '/..' . '/arielmejiadev/larapex-charts/src/LarapexChart.php',
         'ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider' => __DIR__ . '/..' . '/arielmejiadev/larapex-charts/src/LarapexChartsServiceProvider.php',
         'ArielMejiaDev\\LarapexCharts\\LineChart' => __DIR__ . '/..' . '/arielmejiadev/larapex-charts/src/LineChart.php',
         'ArielMejiaDev\\LarapexCharts\\PieChart' => __DIR__ . '/..' . '/arielmejiadev/larapex-charts/src/PieChart.php',

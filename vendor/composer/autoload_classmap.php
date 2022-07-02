@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Charts\\MonthlyUsersChart' => $baseDir . '/app/Charts/MonthlyUsersChart.php',
+    'App\\Console\\Commands\\ChartMakeCommand' => $baseDir . '/app/Console/Commands/ChartMakeCommand.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Exports\\LaporanBulananExport' => $baseDir . '/app/Exports/LaporanBulananExport.php',
@@ -43,6 +45,7 @@ return array(
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\bulan' => $baseDir . '/app/Models/bulan.php',
     'App\\Models\\detail' => $baseDir . '/app/Models/detail.php',
+    'App\\Models\\keterangan' => $baseDir . '/app/Models/keterangan.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -56,7 +59,6 @@ return array(
     'ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart' => $vendorDir . '/arielmejiadev/larapex-charts/src/Facades/LarapexChart.php',
     'ArielMejiaDev\\LarapexCharts\\HeatMapChart' => $vendorDir . '/arielmejiadev/larapex-charts/src/HeatMapChart.php',
     'ArielMejiaDev\\LarapexCharts\\HorizontalBar' => $vendorDir . '/arielmejiadev/larapex-charts/src/HorizontalBar.php',
-    'ArielMejiaDev\\LarapexCharts\\LarapexChart' => $vendorDir . '/arielmejiadev/larapex-charts/src/LarapexChart.php',
     'ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider' => $vendorDir . '/arielmejiadev/larapex-charts/src/LarapexChartsServiceProvider.php',
     'ArielMejiaDev\\LarapexCharts\\LineChart' => $vendorDir . '/arielmejiadev/larapex-charts/src/LineChart.php',
     'ArielMejiaDev\\LarapexCharts\\PieChart' => $vendorDir . '/arielmejiadev/larapex-charts/src/PieChart.php',

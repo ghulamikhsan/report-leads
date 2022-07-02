@@ -119,8 +119,9 @@ class DetailController extends Controller
             ->where('month', $date)
             ->get();
         $bln = bulan::select('nomonth')->where('month', $date)->get()->first();
+        $bln2 = bulan::select('month')->where('month', $date)->get()->first();
         // dd($bln);
-        return view('detail.showbln', compact('months', 'bln'));
+        return view('detail.showbln', compact('months', 'bln', 'bln2'));
     }
 
     public function showthn($date)

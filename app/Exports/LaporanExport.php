@@ -28,6 +28,13 @@ class LaporanExport implements FromCollection, WithHeadings, WithColumnFormattin
                 ->get();
     }
 
+    public function columnFormats(): array
+    {
+        return [
+            'C' => NumberFormat::FORMAT_NUMBER,
+        ];
+    }
+
     public function headings(): array
     {
         return [
@@ -39,18 +46,5 @@ class LaporanExport implements FromCollection, WithHeadings, WithColumnFormattin
             'Pesanan',
             'Keterangan',
             ];
-    }
-
-    public function columnFormats(): array
-    {
-        return [
-            'A' => NumberFormat::FORMAT_DATE_DDMMYYYY,
-            'B' => '@',
-            'C' => '@',
-            'D' => '@',
-            'E' => '@',
-            'F' => '@',
-            'G' => '@',
-        ];
     }
 }
