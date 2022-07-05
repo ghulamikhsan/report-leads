@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\LaporanExport;
 use App\Models\Customer;
+use App\Models\keterangan;
 use App\Models\Laporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -55,6 +56,8 @@ class LaporanController extends Controller
 
         $customers = Customer::where('created_by', auth()->user()->id)->orderBy('name', 'ASC')->get();
 
+        $keterangans = keterangan::select('nama_keterangan')->get();
+
         $tgl = Laporan::selectRaw(' monthname(date) as month , month(date) as nomonth, year(date) as year')
                 ->groupBy('year', 'month', 'nomonth')
                 ->orderBy('year')
@@ -74,7 +77,7 @@ class LaporanController extends Controller
 
         // dd($data);
 
-        return view('laporan.index', compact('customers', 'tgl'));
+        return view('laporan.index', compact('customers', 'tgl', 'keterangans'));
     }
 
     public function store(Request $request)

@@ -122,10 +122,32 @@
                                             {!! Form::text('order', null, ['placeholder' => 'Pesanan', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    {{-- <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Keterangan</label>
                                             {!! Form::text('description', null, ['placeholder' => 'Keterangan', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group">
+                                            <label for="keterangan">Nama Keterangan</label>
+                                            <select name="payFor" id="payFor">
+                                                <option disabled selected value>-</option>
+                                                <option value="service">Service</option>
+                                                <option value="product">Product</option>
+                                            </select>
+                                            <div style="display: none;" id="services">
+                                                <select name="serviceId" hidden>
+                                                    <option disabled selected value>-</option>
+                                                    {!! Form::text('description', null, ['placeholder' => 'Keterangan', 'class' => 'form-control']) !!}
+                                                </select>
+                                            </div>
+                                            <div style="display: none;" id="products">
+                                                <select name="productId" hidden>
+                                                    {{-- <option disabled selected value>-</option> --}}
+                                                    {!! Form::text('description', null, ['placeholder' => 'Keterangan', 'class' => 'form-control']) !!}
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -222,6 +244,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script type="text/javascript">
         let bulan = $("#bulan").val()
+        document.getElementById('payFor').addEventListener("change", function(e) {
+            if (e.target.value === 'product') {
+                document.getElementById('services').style.display = 'none';
+                document.getElementById('products').style.display = 'block';
+            } else {
+                document.getElementById('products').style.display = 'none';
+                document.getElementById('services').style.display = 'block'
+            }
+        });
         $(document).ready(function() {
 
             $.ajaxSetup({

@@ -35,4 +35,9 @@ class Laporan extends Model
     {
         return $this->belongsTo('App\Models\User', 'created_by');
     }
+
+    public function keterangan()
+    {
+        return $this->belongsTo('App\Models\User', 'description');
+    }
 }
