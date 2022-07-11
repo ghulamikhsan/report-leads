@@ -130,22 +130,27 @@
                                     </div> --}}
                                     <div class="col-md-12 col-12">
                                         <div class="form-group">
-                                            <label for="keterangan">Nama Keterangan</label>
-                                            <select name="payFor" id="payFor">
+                                            <label>Pilih Keterangan</label>
+                                            <select name="payFor" id="payFor" class="form-control">
                                                 <option disabled selected value>-</option>
-                                                <option value="service">Service</option>
-                                                <option value="product">Product</option>
+                                                <option value="service">Template</option>
+                                                <option value="product">Custom</option>
                                             </select>
-                                            <div style="display: none;" id="services">
-                                                <select name="serviceId" hidden>
+                                            <br><div style="display: none;" id="services">
+                                                <select name="description1" id="description1" class="form-control">
                                                     <option disabled selected value>-</option>
-                                                    {!! Form::text('description', null, ['placeholder' => 'Keterangan', 'class' => 'form-control']) !!}
+                                                    <option value="Deal">Deal</option>
+                                                    <option value="Penawaran">Penawaran</option>
+                                                    <option value="Tunggu Info">Tunggu Info</option>
+                                                    <option value="Dibawah Minimal">Dibawah Minimal</option>
                                                 </select>
+                                                {{-- <input type="text" name="description1" id="description1" class="form-control"> --}}
                                             </div>
                                             <div style="display: none;" id="products">
-                                                <select name="productId" hidden>
-                                                    {{-- <option disabled selected value>-</option> --}}
-                                                    {!! Form::text('description', null, ['placeholder' => 'Keterangan', 'class' => 'form-control']) !!}
+                                                <select name="productId">
+                                                    <option disabled selected value>-</option>
+                                                    {{-- {!! Form::text('description', null, ['placeholder' => 'Keterangan', 'class' => 'form-control']) !!} --}}
+                                                    <input type="text" name="description" id="description" class="form-control">
                                                 </select>
                                             </div>
                                         </div>

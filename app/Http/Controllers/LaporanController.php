@@ -40,7 +40,7 @@ class LaporanController extends Controller
                 ->whereYear('laporans.date', $tahun)
                 ->whereMonth('laporans.date', $bulan)
                 ->orderBy('laporans.date', 'DESC')
-                ->latest();
+                ->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -86,20 +86,16 @@ class LaporanController extends Controller
             $validator = Validator::make($request->all(), [
                 'date' => 'required',
                 'customer_information' => 'required',
-                // 'id_customer' => 'required',
                 'qty' => 'required',
                 'order' => 'required',
-                'description' => 'required',
             ]);
         } else {
             $validator = Validator::make($request->all(), [
                 'Item_id' => 'required',
                 'date' => 'required',
                 'customer_information' => 'required',
-                // 'id_customer' => 'required',
                 'qty' => 'required',
                 'order' => 'required',
-                'description' => 'required',
             ]);
         }
 
@@ -116,6 +112,11 @@ class LaporanController extends Controller
             ]
         );
 
+        if ($request->description1 == '') {
+            $des = $request->description;
+        } else {
+            $des = $request->description1;
+        }
         Laporan::updateOrCreate(
             ['id' => $request->Item_id],
             [
@@ -125,12 +126,14 @@ class LaporanController extends Controller
                 'id_customer' => $cust,
                 'qty' => $request->qty,
                 'order' => $request->order,
-                'description' => $request->description,
+                'description' => $des,
                 'created_by' => $request->created_by,
             ]
         );
 
-        return response()->json(['success' => 'Item deleted successfully.']);
+        // dd($lap);
+
+        return response()->json(['success' => 'Item store successfully.']);
     }
 
     public function edit($id)
