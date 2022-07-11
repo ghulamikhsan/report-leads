@@ -5,11 +5,12 @@ namespace App\Exports;
 use App\Models\bulan;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class LaporanTahunanExport implements FromCollection, WithHeadings, WithColumnFormatting
+class LaporanTahunanExport implements FromCollection, WithHeadings, WithColumnFormatting, ShouldAutoSize
 {
     /**
      * @return \Illuminate\Support\Collection

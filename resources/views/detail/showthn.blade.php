@@ -26,11 +26,11 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Management Detail Laporan Tahunan</h2>
+                                    <h2 class="card-title">Management Detail Laporan Tahun {{$bln->year}}</h2>
                                 </div>
                                 <div class="card-header">
                                     
-                                    <a href="export_tahunan/{{$bln->year}}" class="btn btn-success btn-sm" target="_blank">Export Excel</a>
+                                    <a href="/export_tahunan/{{$bln->year}}" class="btn btn-success btn-sm" target="_blank">Export Excel</a>
                                 </div>
                                 @php
                                     $today = today(); 

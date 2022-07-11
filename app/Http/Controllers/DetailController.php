@@ -118,9 +118,10 @@ class DetailController extends Controller
             ->where('users.id', '=', auth()->user()->id)
             ->where('month', $date)
             ->get();
-        $bln = bulan::select('nomonth')->where('month', $date)->get()->first();
-        $bln2 = bulan::select('month')->where('month', $date)->get()->first();
-        // dd($bln);
+        $bln = bulan::select('nomonth')->where('month', $date)->first();
+        $bln2 = bulan::select('month')->where('month', $date)->first();
+        // dd($bln2);
+
         return view('detail.showbln', compact('months', 'bln', 'bln2'));
     }
 
@@ -140,17 +141,15 @@ class DetailController extends Controller
     public function export_excel_bulanan($date)
     {
         $tahun = Carbon::now()->format('Y');
-        $bulan = Carbon::now()->format('m');
 
-        return Excel::download(new LaporanBulananExport($tahun, $date), 'Lead_bulanan.xlsx');
+        return Excel::download(new LaporanBulananExport($tahun, $date), 'Lead Bulan '.$date.'.xlsx');
     }
 
     public function export_excel_tahunan($date)
     {
         $tahun = Carbon::now()->format('Y');
-        $bulan = Carbon::now()->format('m');
 
-        return Excel::download(new LaporanTahunanExport($tahun, $date), 'Lead_tahunan.xlsx');
+        return Excel::download(new LaporanTahunanExport($tahun, $date), 'Lead Tahun '.$date.'.xlsx');
     }
 
     public function html()

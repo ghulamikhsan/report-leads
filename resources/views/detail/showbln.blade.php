@@ -26,17 +26,17 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Management Detail Laporan Bulan {{$bln2->month}}</h2>
+                                    <h2 class="card-title">Management Detail Laporan Bulan {{ $bln2->month }}</h2>
                                 </div>
                                 <div class="card-header">
-                                    
-                                    <a href="/export_bulanan/{{$bln->nomonth}}" class="btn btn-success btn-sm" target="_blank">Export Excel</a>
+                                    <a href="/export_bulanan/{{ $bln->nomonth }}" class="btn btn-success btn-sm"
+                                        target="_blank">Export Excel</a>
                                 </div>
                                 @php
-                                    $today = today(); 
+                                    $today = today();
                                     $dates = [];
-
-                                    for($i=1; $i < $today->daysInMonth + 1; ++$i) {
+                                    
+                                    for ($i = 1; $i < $today->daysInMonth + 1; ++$i) {
                                         $dates[] = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('Y-m-d');
                                     }
                                 @endphp
@@ -112,11 +112,11 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
+
             $(document).ready(function() {
                 $('select').select();
                 $('#example2').DataTable();
             });
-});
+        });
     </script>
 @endsection

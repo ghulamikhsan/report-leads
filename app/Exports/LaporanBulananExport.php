@@ -8,9 +8,10 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class LaporanBulananExport implements FromCollection, WithHeadings, ShouldAutoSize, WithColumnFormatting
+class LaporanBulananExport implements FromCollection, WithHeadings, ShouldAutoSize, WithColumnFormatting, WithMapping
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -44,6 +45,21 @@ class LaporanBulananExport implements FromCollection, WithHeadings, ShouldAutoSi
                 ->whereYear('bulan.date', $this->year)
                 ->orderBy('bulan.date')
                 ->get();
+    }
+
+    public function map($laporan): array
+    {
+        return [
+            [
+                $laporan->date,
+                $laporan->customer_name,
+                $laporan->number,
+                $laporan->customer_information,
+                $laporan->qty,
+                $laporan->order,
+                $laporan->description,
+            ],
+        ];
     }
 
     public function headings(): array
