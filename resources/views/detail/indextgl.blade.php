@@ -30,7 +30,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover data-table">
+                                    <table id="example2" cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-hover data-table">
                                         <thead>
                                             <?php $i = 1; ?>
                                             <tr>
@@ -45,7 +45,7 @@
                                             @foreach ($months as $month => $item)
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
-                                                    <td>{{ $month }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($month)) }}</td>
                                                     <td>
                                                         <a href="{{ 'detailtgl/'.$month }}" data-toggle="tooltip"  data-original-title="Detail" class="detail btn btn-primary btn-sm detailItem"><i class="fas fa-info-circle"></i> Details</a>
                                                     </td>

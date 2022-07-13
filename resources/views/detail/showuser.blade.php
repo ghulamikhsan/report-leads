@@ -26,25 +26,12 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Management Detail Laporan </h2>
+                                    <h2 class="card-title">Management Detail Laporan Marketing {{ ucwords($names->name) }} </h2>
                                 </div>
                                 <div class="card-header">
                                     <div class="project-sort float-right">
                                     <div class="project-sort-item">
                                         <form class="form-inline">
-                                            <!--<div class="form-group mr-2">-->
-                                            <!--<label>Cari Berdasarkan Bulan :</label>-->
-                                            <!--<select id="status" class="form-control" wire:model="month">-->
-                                            <!--    <option value="0" selected>Pilih</option>-->
-                                            <!--    <?php for ($i = 0; $i < count($tgl); $i++){?>-->
-                                            <!--    <option value="{{ $tgl[$i]->nomonth}} {{ $tgl[$i]->year}}">{{ $tgl[$i]->month}} {{ $tgl[$i]->year}}</option>-->
-                                            <!--    <?php }?>-->
-                                              
-                                            <!--</select>-->
-                                            <!--    	    <button class="btn btn-info btn-sm ml-2" name="cari" type="submit" value="{{ $tgl[0]->nomonth}}" >Cari</button>-->
-                                            <!--        </from>-->
-                                            <!--    </form>-->
-                                            <!--</div>-->
                                     </div>
                                 </div>
                                 </div>
@@ -54,11 +41,7 @@
                                     <table id="example2" class="table table-bordered table-hover data-table">
                                         <thead>
                                             <tr>
-                                                {{-- <th class="text-center">
-                                                    No
-                                                </th> --}}
                                                 <th>Tanggal</th>
-                                                {{-- <th>Deal</th> --}}
                                                 <th>Nama Customer</th>
                                                 <th>Nomor Whatsapp</th>
                                                 <th>Informasi Customer</th>
@@ -71,7 +54,6 @@
                                             @foreach ($laporans as $report)
                                                 <tr>
                                                     <td>{{ date('d-m-Y', strtotime(  $report->date)) }}</td>
-                                                    {{-- <td>{{ $report->deal }}</td> --}}
                                                     <td>{{ $report->name }}</td>
                                                     <td>{{ $report->no_wa }}</td>
                                                     <td>{{ $report->customer_information }}</td>

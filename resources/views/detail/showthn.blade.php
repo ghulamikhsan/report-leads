@@ -45,11 +45,7 @@
                                     <table id="example2" class="table table-bordered table-hover data-table">
                                         <thead>
                                             <tr>
-                                                {{-- <th class="text-center">
-                                                    No
-                                                </th> --}}
                                                 <th>Tanggal</th>
-                                                {{-- <th>Deal</th> --}}
                                                 <th>Nama Customer</th>
                                                 <th>Informasi Customer</th>
                                                 <th>Nomor Whatsapp</th>
@@ -61,7 +57,7 @@
                                         <tbody>
                                             @foreach ($months as $item)
                                                 <tr>
-                                                    <td>{{ $item->date }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
                                                     <td>{{ $item->customer_name }}</td>
                                                     <td>{{ $item->customer_information }}</td>
                                                     <td>{{ $item->no_wa }}</td>

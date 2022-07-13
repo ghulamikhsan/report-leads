@@ -45,7 +45,7 @@
                                             @foreach ($names as $name)
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
-                                                    <td>{{ $name->name }}</td>
+                                                    <td>{{ ucwords($name->name) }}</td>
                                                     <td>
                                                         <a href="{{ 'detail/'.$name->id }}" data-toggle="tooltip"  data-original-title="Detail" class="detail btn btn-primary btn-sm detailItem" ><i class="fas fa-info-circle"></i> Details</a>
                                                     </td>

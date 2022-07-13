@@ -37,7 +37,7 @@ class LaporanBulananExport implements FromCollection, WithHeadings, ShouldAutoSi
         // return Laporan::all();
         $bulan = Carbon::now()->format('m');
 
-        return $data = bulan::join('customers', 'bulan.id_customer', '=', 'customers.id')
+        return bulan::join('customers', 'bulan.id_customer', '=', 'customers.id')
                 ->join('users', 'bulan.created_by', '=', 'users.id')
                 ->select('bulan.date', 'customers.name as customer_name', 'customers.no_wa as number', 'bulan.customer_information', 'bulan.qty', 'bulan.order', 'bulan.description')
                 ->where('users.id', '=', auth()->user()->id)
@@ -50,7 +50,6 @@ class LaporanBulananExport implements FromCollection, WithHeadings, ShouldAutoSi
     public function map($laporan): array
     {
         return [
-            [
                 $laporan->date,
                 $laporan->customer_name,
                 $laporan->number,
@@ -58,20 +57,19 @@ class LaporanBulananExport implements FromCollection, WithHeadings, ShouldAutoSi
                 $laporan->qty,
                 $laporan->order,
                 $laporan->description,
-            ],
         ];
     }
 
     public function headings(): array
     {
         return [
-            'Tanggal',
-            'Nama Customer',
-            'Nomor Whatsapp',
-            'Informasi Customer',
-            'QTY',
-            'Pesanan',
-            'Keterangan',
-            ];
+                'Tanggal',
+                'Nama Customer',
+                'Nomor Whatsapp',
+                'Informasi Customer',
+                'QTY',
+                'Pesanan',
+                'Keterangan',
+        ];
     }
 }

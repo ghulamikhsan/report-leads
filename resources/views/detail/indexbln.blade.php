@@ -32,7 +32,6 @@
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover data-table">
                                         <thead>
-                                            
                                             <tr>
                                                 <th width="5%" class="text-center">
                                                     No
@@ -42,29 +41,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- {{ $bulan["March"] }} --}}
                                             <?php $i = 1; ?>
                                            @foreach ($bulan as $date => $item)
                                            <tr>
                                                <td>{{ $i++ }}</td>
-                                               <td>{{ $date }}</td>
+                                               <td>{{ \Carbon\Carbon::parse($date)->translatedFormat('F') }}</td>
                                                <td>
                                                 <a href="{{ 'detailbln/'.$date }}" data-toggle="tooltip"  data-original-title="Detail" class="detail btn btn-primary btn-sm detailItem"><i class="fas fa-info-circle"></i> Details</a>
                                             </td>
-                                                
                                            </tr>
-                                           {{-- @foreach ($dateb as $date)
-                                           <tr>
-                                               <td>{{ $i++ }}</td>
-                                               <td>@if (empty($date))
-                                                    <h7>Belum ada data</h7>
-                                                @else
-                                                    {{ $date->month }}
-                                                @endif</td>
-                                                <td>
-                                                    <a href="{{ '/detailbln/'.$date }}" data-toggle="tooltip"  data-original-title="Detail" class="detail btn btn-primary btn-sm detailItem"><i class="fas fa-info-circle"></i> Details</a>
-                                                </td>
-                                           </tr> --}}
                                            @endforeach
                                         </tbody>
                                     </table>

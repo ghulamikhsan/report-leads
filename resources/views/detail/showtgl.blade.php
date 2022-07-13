@@ -26,26 +26,14 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Management Detail Laporan</h2>
+                                    <h2 class="card-title">Management Detail Laporan Tanggal {{ date('d-m-Y', strtotime($tanggal->date)) }}</h2>
                                 </div>
-                                @php
-                                    $today = today(); 
-                                    $dates = [];
-
-                                    for($i=1; $i < $today->daysInMonth + 1; ++$i) {
-                                        $dates[] = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('Y-m-d');
-                                    }
-                                @endphp
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover data-table">
                                         <thead>
                                             <tr>
-                                                {{-- <th class="text-center">
-                                                    No
-                                                </th> --}}
                                                 <th>Tanggal</th>
-                                                {{-- <th>Deal</th> --}}
                                                 <th>Nama Customer</th>
                                                 <th>Informasi Customer</th>
                                                 <th>Nomor Whatsapp</th>
@@ -59,7 +47,7 @@
                                             @foreach ($months as $month =>$item)
                                             @foreach ($item as $index => $item2)
                                             <tr>
-                                                <td>{{ date('d-m-Y', strtotime(  $item2->date)) }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($item2->date)) }}</td>
                                                 <td>{{ $item2->name }}</td>
                                                 <td>{{ $item2->customer_information }}</td>
                                                 <td>{{ $item2->no_wa }}</td>

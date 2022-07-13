@@ -26,30 +26,18 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Management Detail Laporan Bulan {{ $bln2->month }}</h2>
+                                    <h2 class="card-title">Management Detail Laporan Bulan {{ \Carbon\Carbon::parse($bln2->month)->translatedFormat('F') }}</h2>
                                 </div>
                                 <div class="card-header">
                                     <a href="/export_bulanan/{{ $bln->nomonth }}" class="btn btn-success btn-sm"
                                         target="_blank">Export Excel</a>
                                 </div>
-                                @php
-                                    $today = today();
-                                    $dates = [];
-                                    
-                                    for ($i = 1; $i < $today->daysInMonth + 1; ++$i) {
-                                        $dates[] = \Carbon\Carbon::createFromDate($today->year, $today->month, $i)->format('Y-m-d');
-                                    }
-                                @endphp
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover data-table">
                                         <thead>
                                             <tr>
-                                                {{-- <th class="text-center">
-                                                    No
-                                                </th> --}}
                                                 <th>Tanggal</th>
-                                                {{-- <th>Deal</th> --}}
                                                 <th>Nama Customer</th>
                                                 <th>Informasi Customer</th>
                                                 <th>Nomor Whatsapp</th>
@@ -61,7 +49,7 @@
                                         <tbody>
                                             @foreach ($months as $item)
                                                 <tr>
-                                                    <td>{{ $item->date }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($item->date)) }}</td>
                                                     <td>{{ $item->customer_name }}</td>
                                                     <td>{{ $item->customer_information }}</td>
                                                     <td>{{ $item->no_wa }}</td>
@@ -72,6 +60,70 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="content-header">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Detail Laporan Jumlah Customer Baru dan Lama Bulan {{ \Carbon\Carbon::parse($bln2->month)->translatedFormat('F') }}</h2>
+                                </div>
+                                <!-- /.card-header -->
+                                    @php
+                                        $today = today();
+                                        $tahun = date('Y', strtotime($item->date));
+                                        $bulan = date('m', strtotime($item->date));
+                                        $dates = [];
+                                        
+                                        for ($i = 1; $i < $today->daysInMonth + 1; ++$i) {
+                                            $dates[] = \Carbon\Carbon::createFromDate($tahun, $bulan, $i)->format('Y-m-d');
+                                        }
+                                        
+                                        $bulan = $today->month;
+                                    @endphp
+                                    <div class="card-body">
+                                        <table id="example" class="table table-bordered table-hover data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="10%">Tanggal</th>
+                                                    <th>Lama</th>
+                                                    <th>Baru</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 0;
+                                                $j = 0; ?>
+                                                @foreach ($dates as $date)
+                                                    <tr>
+                                                        <td>{{ date('d-m-Y', strtotime($date)) }}</td>
+                                                        <?php $clama = $counts_lama->where('date', $date)->first(); ?>
+                                                        <?php $cbaru = $counts_baru->where('date', $date)->first(); ?>
+
+                                                        @if (empty($clama->status))
+                                                            <td class="table-danger"></td>
+                                                        @else
+                                                            <td>{{ $clama->status }} Lama</td>
+                                                        @endif
+
+                                                        @if (empty($cbaru->status))
+                                                            <td class="table-danger"></td>
+                                                        @else
+                                                            <td>{{ $cbaru->status }} Baru</td>
+                                                        @endif
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -116,6 +168,7 @@
             $(document).ready(function() {
                 $('select').select();
                 $('#example2').DataTable();
+                $('#example').DataTable();
             });
         });
     </script>

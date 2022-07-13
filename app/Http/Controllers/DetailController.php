@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BulanExport;
 use App\Exports\LaporanBulananExport;
 use App\Exports\LaporanTahunanExport;
 use App\Models\bulan;
@@ -11,7 +12,6 @@ use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
-use Yajra\DataTables\Html\Column;
 
 class DetailController extends Controller
 {
@@ -37,14 +37,9 @@ class DetailController extends Controller
             ->orderBy('year')
             ->orderBy('nomonth')
             ->get();
-        // $months = Laporan::get()->groupBy('date');;
         $bulan = bulan::get()->groupBy('month', 'year');
-        $hitung = count($bulan);
-        for ($i = 1; $i <= 12; ++$i) {
-            $dateb[$i] = bulan::select('month', 'year')->whereMonth('date', $i)->get()->first();
-        }
         // dd($dateb);
-        return view('detail.indexbln', compact('months', 'bulan', 'dateb'));
+        return view('detail.indexbln', compact('months', 'bulan'));
     }
 
     public function indexthn()
@@ -65,6 +60,7 @@ class DetailController extends Controller
 
     public function show($created_by)
     {
+        $names = User::find($created_by);
         $report = Laporan::find($created_by);
         // $report = DB::table('laporans')->where('created_by', auth()->user()->id)->get();
         $counts_lama = DB::table('laporans')
@@ -93,8 +89,9 @@ class DetailController extends Controller
                 ->orderBy('year')
                 ->orderBy('nomonth')
                 ->get();
-        // dd($counts_baru);
-        return view('detail.showuser', compact('report', 'counts_lama', 'counts_baru', 'laporans', 'tgl'));
+        // dd($names);
+
+        return view('detail.showuser', compact('report', 'counts_lama', 'counts_baru', 'laporans', 'tgl', 'names'));
     }
 
     public function showtgl($date)
@@ -106,8 +103,10 @@ class DetailController extends Controller
             ->get()
             ->where('date', $date)
             ->groupBy('date');
-        // dd($months);
-        return view('detail.showtgl', compact('months'));
+        $tanggal = Laporan::select('date')->where('date', $date)->first();
+        // dd($tanggal);
+
+        return view('detail.showtgl', compact('months', 'tanggal'));
     }
 
     public function showbln($date)
@@ -118,11 +117,25 @@ class DetailController extends Controller
             ->where('users.id', '=', auth()->user()->id)
             ->where('month', $date)
             ->get();
+        $counts_lama = DB::table('laporans')
+            ->join('users', 'laporans.created_by', '=', 'users.id')
+            ->select('date', DB::raw('COUNT(customer_information) as status'))
+            ->where('customer_information', '=', 'lama')
+            ->where('users.id', auth()->user()->id)
+            ->groupBy('date')
+            ->get();
+        $counts_baru = DB::table('laporans')
+            ->join('users', 'laporans.created_by', '=', 'users.id')
+            ->select('date', DB::raw('COUNT(customer_information) as status'))
+            ->where('customer_information', '=', 'baru')
+            ->where('users.id', auth()->user()->id)
+            ->groupBy('date')
+            ->get();
         $bln = bulan::select('nomonth')->where('month', $date)->first();
         $bln2 = bulan::select('month')->where('month', $date)->first();
-        // dd($bln2);
+        // dd($counts_baru);
 
-        return view('detail.showbln', compact('months', 'bln', 'bln2'));
+        return view('detail.showbln', compact('months', 'bln', 'bln2', 'counts_baru', 'counts_lama'));
     }
 
     public function showthn($date)
@@ -141,45 +154,17 @@ class DetailController extends Controller
     public function export_excel_bulanan($date)
     {
         $tahun = Carbon::now()->format('Y');
+        $nama_file = 'Lead Bulan '.$date.' di download pada '.date('m-d-Y').'.xlsx';
 
-        return Excel::download(new LaporanBulananExport($tahun, $date), 'Lead Bulan '.$date.'.xlsx');
+        // return Excel::download(new BulanExport($tahun, $date), $nama_file);
+        return Excel::download(new LaporanBulananExport($tahun, $date), $nama_file);
     }
 
     public function export_excel_tahunan($date)
     {
         $tahun = Carbon::now()->format('Y');
+        $nama_file = 'Lead Tahun '.$date.' di download pada '.date('m-d-Y').'.xlsx';
 
-        return Excel::download(new LaporanTahunanExport($tahun, $date), 'Lead Tahun '.$date.'.xlsx');
-    }
-
-    public function html()
-    {
-        return $this->builder()
-                    ->setTableId('bulan-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->orderBy(1)
-                    ->parameters([
-                        'dom' => 'Bfrtip',
-                        'buttons' => ['excel', 'csv'],
-                    ]);
-    }
-
-    protected function getColumns()
-    {
-        return [
-            Column::make('date'),
-            Column::make('customer_information'),
-            Column::make('no_wa'),
-            Column::make('id_customer'),
-            Column::make('qty'),
-            Column::make('order'),
-            Column::make('description'),
-        ];
-    }
-
-    protected function filename()
-    {
-        return 'Laporan-Bulan_'.date('Ym');
+        return Excel::download(new LaporanTahunanExport($tahun, $date), $nama_file);
     }
 }
