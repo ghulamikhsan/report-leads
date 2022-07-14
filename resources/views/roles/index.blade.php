@@ -23,7 +23,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">@yield('title')</h2>
@@ -154,6 +154,7 @@
             });
 
             var table = $('.data-table').DataTable({
+                responsive: true,
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('roles.index') }}",

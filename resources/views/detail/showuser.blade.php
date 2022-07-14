@@ -23,7 +23,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Management Detail Laporan Marketing {{ ucwords($names->name) }} </h2>
@@ -107,10 +107,9 @@
             
             $(document).ready(function() {
                 $('select').select();
-                $('#example2').DataTable();
-                $('#status').change(function() {
-                dtTable.draw();
-                })
+                $('#example2').DataTable({
+                    responsive: true
+                });
             });
 });
     </script>

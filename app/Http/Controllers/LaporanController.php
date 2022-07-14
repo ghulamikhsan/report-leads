@@ -25,6 +25,8 @@ class LaporanController extends Controller
 
     public function index(Request $request)
     {
+        $i_bulan = Carbon::now()->translatedFormat('F');
+
         if (empty($_GET['cari'])) {
             $bulan = Carbon::now()->format('m');
         } else {
@@ -77,7 +79,7 @@ class LaporanController extends Controller
 
         // dd($data);
 
-        return view('laporan.index', compact('customers', 'tgl', 'keterangans'));
+        return view('laporan.index', compact('customers', 'tgl', 'keterangans', 'i_bulan'));
     }
 
     public function store(Request $request)

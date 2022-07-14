@@ -23,7 +23,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Management Detail Laporan Per Tahun</h2>
@@ -111,7 +111,9 @@
             
             $(document).ready(function() {
                 $('select').select();
-                $('#example2').DataTable();
+                $('#example2').DataTable({
+                    responsive: true
+                });
             });
 });
     </script>

@@ -22,7 +22,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Total Lead
@@ -38,10 +38,11 @@
                                 <!-- /.card-body -->
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Jumlah Customer Tanggal {{ $hari }} {{ $i_bulan }} {{ $tahun }}
+                                    <h2 class="card-title">Jumlah Customer Tanggal {{ $hari }} {{ $i_bulan }}
+                                        {{ $tahun }}
                                     </h2>
                                 </div>
                                 <!-- /.card-header -->
@@ -54,7 +55,7 @@
                                 <!-- /.card-body -->
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Jumlah Customer Bulan {{ $i_bulan }}</h2>
@@ -69,7 +70,7 @@
                                 <!-- /.card-body -->
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Total Customer</h2>
@@ -84,7 +85,7 @@
                                 <!-- /.card-body -->
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Grafik Total Keseluruhan Lead</h2>
@@ -94,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Grafik Total Lead Bulan {{ $i_bulan }}</h2>
@@ -104,7 +105,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Grafik Total Lead Per Bulan</h2>
@@ -114,14 +115,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">Data Leads Bulan {{ $i_bulan }}</h2>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover data-table">
+                                    <table id="example2" class="table table-bordered table-hover data-table table-responsive">
                                         <thead>
                                             <tr>
                                                 <th>Tanggal</th>
@@ -137,14 +138,14 @@
                                         <tbody>
                                             @foreach ($reports as $report)
                                                 <tr>
-                                                    <td>{{ $report->date }}</td>
+                                                    <td>{{ date('d-m-Y', strtotime($report->date)) }}</td>
                                                     <td>{{ $report->name }}</td>
                                                     <td>{{ $report->no_wa }}</td>
                                                     <td>{{ $report->customer_information }}</td>
                                                     <td>{{ $report->order }}</td>
                                                     <td>{{ $report->qty }}</td>
                                                     <td>{{ $report->description }}</td>
-                                                    @if ($report->uname == "vira")
+                                                    @if ($report->uname == 'vira')
                                                         <td bgcolor="#00C1FE">{{ $report->uname }}</td>
                                                     @else
                                                         <td bgcolor="#32EF69">{{ $report->uname }}</td>
@@ -198,7 +199,9 @@
 
             $(document).ready(function() {
                 $('select').select();
-                $('#example2').DataTable();
+                $('#example2').DataTable({
+                    responsive: true
+                });
             });
 
         });
@@ -214,7 +217,7 @@
                 type: 'bar',
                 height: 350
             },
-            colors:['#00C1FE', '#32EF69'],
+            colors: ['#00C1FE', '#32EF69'],
             plotOptions: {
                 bar: {
                     horizontal: false,
@@ -239,7 +242,7 @@
             tooltip: {
                 y: {
                     formatter: function(val) {
-                        return  + val + ""
+                        return +val + ""
                     }
                 }
             }
@@ -260,7 +263,7 @@
                 type: 'bar',
                 height: 350
             },
-            colors:['#00C1FE', '#32EF69'],
+            colors: ['#00C1FE', '#32EF69'],
             plotOptions: {
                 bar: {
                     horizontal: false,
@@ -285,7 +288,7 @@
             tooltip: {
                 y: {
                     formatter: function(val) {
-                        return  + val + ""
+                        return +val + ""
                     }
                 }
             }
@@ -300,13 +303,13 @@
                 data: {!! $chart_p_bulan_vira !!},
             }, {
                 name: {!! $chart_luluk !!},
-                data: {!! $chart_p_bulan_luluk !!} ,
+                data: {!! $chart_p_bulan_luluk !!},
             }],
             chart: {
                 type: 'bar',
                 height: 350
             },
-            colors:['#00C1FE', '#32EF69'],
+            colors: ['#00C1FE', '#32EF69'],
             plotOptions: {
                 bar: {
                     horizontal: false,
@@ -331,7 +334,7 @@
             tooltip: {
                 y: {
                     formatter: function(val) {
-                        return  + val + ""
+                        return +val + ""
                     }
                 }
             }

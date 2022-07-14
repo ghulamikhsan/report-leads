@@ -23,10 +23,11 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Management Detail Laporan Bulan {{ \Carbon\Carbon::parse($bln2->month)->translatedFormat('F') }}</h2>
+                                    <h2 class="card-title">Management Detail Laporan Bulan
+                                        {{ \Carbon\Carbon::parse($bln2->month)->translatedFormat('F') }}</h2>
                                 </div>
                                 <div class="card-header">
                                     <a href="/export_bulanan/{{ $bln->nomonth }}" class="btn btn-success btn-sm"
@@ -72,67 +73,68 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Detail Laporan Jumlah Customer Baru dan Lama Bulan {{ \Carbon\Carbon::parse($bln2->month)->translatedFormat('F') }}</h2>
+                                    <h2 class="card-title">Detail Laporan Jumlah Customer Baru dan Lama Bulan
+                                        {{ \Carbon\Carbon::parse($bln2->month)->translatedFormat('F') }}</h2>
                                 </div>
                                 <!-- /.card-header -->
-                                    @php
-                                        $today = today();
-                                        $tahun = date('Y', strtotime($item->date));
-                                        $bulan = date('m', strtotime($item->date));
-                                        $dates = [];
-                                        
-                                        for ($i = 1; $i < $today->daysInMonth + 1; ++$i) {
-                                            $dates[] = \Carbon\Carbon::createFromDate($tahun, $bulan, $i)->format('Y-m-d');
-                                        }
-                                        
-                                        $bulan = $today->month;
-                                    @endphp
-                                    <div class="card-body">
-                                        <table id="example" class="table table-bordered table-hover data-table">
-                                            <thead>
+                                @php
+                                    $today = today();
+                                    $tahun = date('Y', strtotime($item->date));
+                                    $bulan = date('m', strtotime($item->date));
+                                    $dates = [];
+                                    
+                                    for ($i = 1; $i < $today->daysInMonth + 1; ++$i) {
+                                        $dates[] = \Carbon\Carbon::createFromDate($tahun, $bulan, $i)->format('Y-m-d');
+                                    }
+                                    
+                                    $bulan = $today->month;
+                                @endphp
+                                <div class="card-body">
+                                    <table id="example" class="table table-bordered table-hover data-table">
+                                        <thead>
+                                            <tr>
+                                                <th width="9%">Tanggal</th>
+                                                <th>Lama</th>
+                                                <th>Baru</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 0;
+                                            $j = 0; ?>
+                                            @foreach ($dates as $date)
                                                 <tr>
-                                                    <th width="10%">Tanggal</th>
-                                                    <th>Lama</th>
-                                                    <th>Baru</th>
+                                                    <td>{{ date('d-m-Y', strtotime($date)) }}</td>
+                                                    <?php $clama = $counts_lama->where('date', $date)->first(); ?>
+                                                    <?php $cbaru = $counts_baru->where('date', $date)->first(); ?>
+
+                                                    @if (empty($clama->status))
+                                                        <td class="table-danger"></td>
+                                                    @else
+                                                        <td>{{ $clama->status }} Lama</td>
+                                                    @endif
+
+                                                    @if (empty($cbaru->status))
+                                                        <td class="table-danger"></td>
+                                                    @else
+                                                        <td>{{ $cbaru->status }} Baru</td>
+                                                    @endif
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $i = 0;
-                                                $j = 0; ?>
-                                                @foreach ($dates as $date)
-                                                    <tr>
-                                                        <td>{{ date('d-m-Y', strtotime($date)) }}</td>
-                                                        <?php $clama = $counts_lama->where('date', $date)->first(); ?>
-                                                        <?php $cbaru = $counts_baru->where('date', $date)->first(); ?>
-
-                                                        @if (empty($clama->status))
-                                                            <td class="table-danger"></td>
-                                                        @else
-                                                            <td>{{ $clama->status }} Lama</td>
-                                                        @endif
-
-                                                        @if (empty($cbaru->status))
-                                                            <td class="table-danger"></td>
-                                                        @else
-                                                            <td>{{ $cbaru->status }} Baru</td>
-                                                        @endif
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <!-- /.card-body -->
                             </div>
+                            <!-- /.card-body -->
                         </div>
                     </div>
                 </div>
-            </section>
         </div>
-        <!-- /.content-header -->
+        </section>
+    </div>
+    <!-- /.content-header -->
     </div>
 @endsection
 
@@ -167,7 +169,9 @@
 
             $(document).ready(function() {
                 $('select').select();
-                $('#example2').DataTable();
+                $('#example2').DataTable({
+                    responsive:true
+                });
                 $('#example').DataTable();
             });
         });
