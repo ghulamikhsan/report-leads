@@ -122,7 +122,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover data-table table-responsive">
+                                    <table id="example2" class="table table-bordered table-hover data-table">
                                         <thead>
                                             <tr>
                                                 <th>Tanggal</th>
@@ -200,7 +200,7 @@
             $(document).ready(function() {
                 $('select').select();
                 $('#example2').DataTable({
-                    responsive: true
+                    responsive:true
                 });
             });
 
