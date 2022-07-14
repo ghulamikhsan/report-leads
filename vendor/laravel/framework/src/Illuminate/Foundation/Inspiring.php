@@ -4,6 +4,42 @@ namespace Illuminate\Foundation;
 
 use Illuminate\Support\Collection;
 
+/*
+                                                   .~))>>
+                                                  .~)>>
+                                                .~))))>>>
+                                              .~))>>             ___
+                                            .~))>>)))>>      .-~))>>
+                                          .~)))))>>       .-~))>>)>
+                                        .~)))>>))))>>  .-~)>>)>
+                    )                 .~))>>))))>>  .-~)))))>>)>
+                 ( )@@*)             //)>))))))  .-~))))>>)>
+               ).@(@@               //))>>))) .-~))>>)))))>>)>
+             (( @.@).              //))))) .-~)>>)))))>>)>
+           ))  )@@*.@@ )          //)>))) //))))))>>))))>>)>
+        ((  ((@@@.@@             |/))))) //)))))>>)))>>)>
+       )) @@*. )@@ )   (\_(\-\b  |))>)) //)))>>)))))))>>)>
+     (( @@@(.@(@ .    _/`-`  ~|b |>))) //)>>)))))))>>)>
+      )* @@@ )@*     (@)  (@) /\b|))) //))))))>>))))>>
+    (( @. )@( @ .   _/  /    /  \b)) //))>>)))))>>>_._
+     )@@ (@@*)@@.  (6///6)- / ^  \b)//))))))>>)))>>   ~~-.
+  ( @jgs@@. @@@.*@_ VvvvvV//  ^  \b/)>>))))>>      _.     `bb
+   ((@@ @@@*.(@@ . - | o |' \ (  ^   \b)))>>        .'       b`,
+    ((@@).*@@ )@ )   \^^^/  ((   ^  ~)_        \  /           b `,
+      (@@. (@@ ).     `-'   (((   ^    `\ \ \ \ \|             b  `.
+        (*.@*              / ((((        \| | |  \       .       b `.
+                          / / (((((  \    \ /  _.-~\     Y,      b  ;
+                         / / / (((((( \    \.-~   _.`" _.-~`,    b  ;
+                        /   /   `(((((()    )    (((((~      `,  b  ;
+                      _/  _/      `"""/   /'                  ; b   ;
+                  _.-~_.-~           /  /'                _.'~bb _.'
+                ((((~~              / /'              _.'~bb.--~
+                                   ((((          __.-~bb.-~
+                                               .'  b .~~
+                                               :bb ,'
+                                               ~~~~
+ */
+
 class Inspiring
 {
     /**
@@ -56,6 +92,7 @@ class Inspiring
             'Life is available only in the present moment. - Thich Nhat Hanh',
             'The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh',
             'Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie',
+            'The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk',
         ])->random();
     }
 }
