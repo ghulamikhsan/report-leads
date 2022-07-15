@@ -14,14 +14,14 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the  -->
         @can('menu-user')
+        <li class="nav-item">
+            <a href="{{ route('dashboard.index') }}"
+                class="nav-link {{ Request::is('detail') ? 'active' : '' }}">
+                <i class="fas fa-th-large nav-icon"></i>
+                <p>Dashboard</p>
+            </a>
+        </li>
             @if (Auth::user()->id == 1)
-                <li class="nav-item">
-                    <a href="{{ route('dashboard.index') }}"
-                        class="nav-link {{ Request::is('detail') ? 'active' : '' }}">
-                        <i class="fas fa-th-large nav-icon"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
                 <li class="nav-item {{ Request::segment(1) === 'dashboard' ? 'menu-is-opening menu-open' : null }}">
                     <a href="#" class="nav-link {{ Request::segment(2) === 'course' ? 'active' : null }}">
                         <i class="nav-icon fas fa-user-lock"></i>
