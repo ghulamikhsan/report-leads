@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bulan;
 use App\Models\Customer;
 use App\Models\Laporan;
 use Illuminate\Support\Carbon;
@@ -25,7 +26,7 @@ class DashboardController extends Controller
         $lead_counts = Laporan::count();
         $customer_counts = Customer::count();
         $customer_M_counts = Laporan::whereMonth('date', $bulan)->count();
-        $customer_d_counts = Laporan::whereMonth('date', $bulan)->whereDay('date', $hari)->count();
+        $customer_d_counts = Laporan::whereMonth('date', $bulan)->whereDay('date', $yesterday)->count();
         $reports = Laporan::join('customers', 'laporans.id_customer', '=', 'customers.id')
         ->join('users', 'laporans.created_by', '=', 'users.id')
         ->select('laporans.id', 'laporans.date', 'laporans.deal', 'laporans.customer_information', 'customers.no_wa', 'customers.name', 'laporans.qty', 'laporans.order', 'laporans.description', 'users.name as uname')
@@ -71,7 +72,6 @@ class DashboardController extends Controller
         ->where('users.id', auth()->user()->id)
         ->groupBy('date')
         ->get();
-        // dd($counts_lama);
         $counts_baru = DB::table('laporans')
         ->join('users', 'laporans.created_by', '=', 'users.id')
         ->select('date', DB::raw('COUNT(customer_information) as status'))
@@ -82,7 +82,7 @@ class DashboardController extends Controller
         $m_lead_counts = Laporan::join('users', 'laporans.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->count();
         $m_customer_counts = Customer::join('users', 'customers.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->count();
         $m_customer_M_counts = Laporan::join('users', 'laporans.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->whereMonth('date', $bulan)->count();
-        $m_customer_d_counts = Laporan::join('users', 'laporans.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->whereMonth('date', $bulan)->whereDay('date', $hari)->count();
+        $m_customer_d_counts = Laporan::join('users', 'laporans.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->whereMonth('date', $bulan)->whereDay('date', $yesterday)->count();
         $m_chart = DB::table('laporans')->join('users', 'laporans.created_by', '=', 'users.id')
         ->select('users.name as uname')
         ->where('users.id', '=', auth()->user()->id)
