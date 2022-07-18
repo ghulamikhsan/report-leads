@@ -60,7 +60,7 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h2 class="card-title">Jumlah Customer Tanggal {{ $hari }}
+                                        <h2 class="card-title">Jumlah Customer Tanggal {{ $yesterday }}
                                             {{ $i_bulan }}
                                             {{ $tahun }}
                                         </h2>
@@ -212,7 +212,7 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h2 class="card-title">Jumlah Customer Tanggal {{ $hari }}
+                                        <h2 class="card-title">Jumlah Customer Tanggal {{ $yesterday }}
                                             {{ $i_bulan }}
                                             {{ $tahun }}
                                         </h2>

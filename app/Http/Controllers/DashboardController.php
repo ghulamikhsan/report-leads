@@ -18,7 +18,8 @@ class DashboardController extends Controller
         $hari = Carbon::now()->format('d');
         $local = Carbon::now()->format('l');
         $tahun = Carbon::now()->format('Y');
-        // dd($bulan);
+        $yesterday = Carbon::now()->yesterday()->format('d');
+        // dd($yesterday);
 
         // admin controller start here
         $lead_counts = Laporan::count();
@@ -81,7 +82,7 @@ class DashboardController extends Controller
         $m_lead_counts = Laporan::join('users', 'laporans.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->count();
         $m_customer_counts = Customer::join('users', 'customers.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->count();
         $m_customer_M_counts = Laporan::join('users', 'laporans.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->whereMonth('date', $bulan)->count();
-        $m_customer_d_counts = Laporan::whereMonth('date', $bulan)->whereDay('date', $hari)->count();
+        $m_customer_d_counts = Laporan::join('users', 'laporans.created_by', '=', 'users.id')->where('users.id', '=', auth()->user()->id)->whereMonth('date', $bulan)->whereDay('date', $hari)->count();
         $m_chart = DB::table('laporans')->join('users', 'laporans.created_by', '=', 'users.id')
         ->select('users.name as uname')
         ->where('users.id', '=', auth()->user()->id)
@@ -107,6 +108,7 @@ class DashboardController extends Controller
         'i_bulan',
         'hari',
         'tahun',
+        'yesterday',
         'reports',
         's_bulan',
         'chart_vira',
