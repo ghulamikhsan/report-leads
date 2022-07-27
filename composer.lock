@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ca9197d1fe9b17642ccc53b2684bc4b",
+    "content-hash": "f54b18f119f95f545b0f60d173dfc8ca",
     "packages": [
+        {
+            "name": "antare74/response-formatter",
+            "version": "v0.1.1-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antare74/response-formatter.git",
+                "reference": "a5362bfa4f7fcd9d025ba4bc3019fe82f9704a4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antare74/response-formatter/zipball/a5362bfa4f7fcd9d025ba4bc3019fe82f9704a4a",
+                "reference": "a5362bfa4f7fcd9d025ba4bc3019fe82f9704a4a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0.33|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Antare74\\ResponseFormatter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aris wahyudiyanto",
+                    "email": "mc.revs404@gmail.com"
+                }
+            ],
+            "description": "This package is used to format the response in a standardized way as json format to help the frontend to understand the response and handle the API response easily.",
+            "keywords": [
+                "api",
+                "formatter",
+                "json",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/antare74/response-formatter/issues",
+                "source": "https://github.com/antare74/response-formatter/tree/v0.1.1-alpha"
+            },
+            "time": "2022-07-01T09:03:14+00:00"
+        },
         {
             "name": "arielmejiadev/larapex-charts",
             "version": "4.1.0",
@@ -1460,6 +1506,71 @@
                 "source": "https://github.com/laravel/helpers/tree/v1.5.0"
             },
             "time": "2022-01-12T15:58:51+00:00"
+        },
+        {
+            "name": "laravel/sanctum",
+            "version": "v2.15.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473",
+                "reference": "31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/console": "^6.9|^7.0|^8.0|^9.0",
+                "illuminate/contracts": "^6.9|^7.0|^8.0|^9.0",
+                "illuminate/database": "^6.9|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.9|^7.0|^8.0|^9.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^8.0|^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Sanctum\\SanctumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Sanctum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "sanctum"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/sanctum/issues",
+                "source": "https://github.com/laravel/sanctum"
+            },
+            "time": "2022-04-08T13:39:49+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -3695,6 +3806,62 @@
                 }
             ],
             "time": "2022-06-29T23:11:42+00:00"
+        },
+        {
+            "name": "stechstudio/laravel-ssh-tunnel",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stechstudio/laravel-ssh-tunnel.git",
+                "reference": "a1862f02388f60e5ed47939eb785bdc5c80fb8ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stechstudio/laravel-ssh-tunnel/zipball/a1862f02388f60e5ed47939eb785bdc5c80fb8ff",
+                "reference": "a1862f02388f60e5ed47939eb785bdc5c80fb8ff",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5|^6.0|^7.0|^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "STS\\Tunneler\\TunnelerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [],
+                "psr-4": {
+                    "STS\\Tunneler\\": "src"
+                },
+                "classmap": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bubba Hines",
+                    "email": "rob@stechstudio.com"
+                }
+            ],
+            "description": "Easy creation & maintenance of an SSH Tunnel for Laravel/Lumen",
+            "keywords": [
+                "laravel",
+                "lumen",
+                "mysql",
+                "ssh",
+                "tunnel"
+            ],
+            "support": {
+                "issues": "https://github.com/stechstudio/laravel-ssh-tunnel/issues",
+                "source": "https://github.com/stechstudio/laravel-ssh-tunnel/tree/3.2.0"
+            },
+            "time": "2022-02-10T14:57:44+00:00"
         },
         {
             "name": "symfony/console",
@@ -8951,7 +9118,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "antare74/response-formatter": 15
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

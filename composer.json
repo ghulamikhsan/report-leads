@@ -9,12 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "antare74/response-formatter": "^0.1.1@alpha",
         "arielmejiadev/larapex-charts": "^4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.7",
         "laravel/framework": "^9.0",
         "laravel/helpers": "^1.4",
+        "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "laravelcollective/html": "^6.2",
@@ -22,6 +24,7 @@
         "nesbot/carbon": "^2.55",
         "phpoffice/phpspreadsheet": "^1.23",
         "spatie/laravel-permission": "^5.5",
+        "stechstudio/laravel-ssh-tunnel": "^3.2",
         "yajra/laravel-datatables-buttons": "^4.13",
         "yajra/laravel-datatables-oracle": "^9.17"
     },

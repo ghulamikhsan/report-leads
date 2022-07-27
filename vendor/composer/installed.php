@@ -5,11 +5,20 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '903419cedffe539ce2c4835bfc2df42313c9628a',
+        'reference' => '2213b9085a503ef296e462721a47d6bdefb0e7a1',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'antare74/response-formatter' => array(
+            'pretty_version' => 'v0.1.1-alpha',
+            'version' => '0.1.1.0-alpha',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../antare74/response-formatter',
+            'aliases' => array(),
+            'reference' => 'a5362bfa4f7fcd9d025ba4bc3019fe82f9704a4a',
+            'dev_requirement' => false,
+        ),
         'arielmejiadev/larapex-charts' => array(
             'pretty_version' => '4.1.0',
             'version' => '4.1.0.0',
@@ -433,7 +442,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '903419cedffe539ce2c4835bfc2df42313c9628a',
+            'reference' => '2213b9085a503ef296e462721a47d6bdefb0e7a1',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -444,6 +453,15 @@
             'aliases' => array(),
             'reference' => '676e1ff33c1b8af657779f62f57360c376cba666',
             'dev_requirement' => true,
+        ),
+        'laravel/sanctum' => array(
+            'pretty_version' => 'v2.15.1',
+            'version' => '2.15.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/sanctum',
+            'aliases' => array(),
+            'reference' => '31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473',
+            'dev_requirement' => false,
         ),
         'laravel/serializable-closure' => array(
             'pretty_version' => 'v1.2.0',
@@ -1101,6 +1119,15 @@
             'install_path' => __DIR__ . '/../spatie/laravel-permission',
             'aliases' => array(),
             'reference' => 'f2303a70be60919811ca8afc313e8244fda00974',
+            'dev_requirement' => false,
+        ),
+        'stechstudio/laravel-ssh-tunnel' => array(
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stechstudio/laravel-ssh-tunnel',
+            'aliases' => array(),
+            'reference' => 'a1862f02388f60e5ed47939eb785bdc5c80fb8ff',
             'dev_requirement' => false,
         ),
         'symfony/console' => array(
