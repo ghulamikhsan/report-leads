@@ -129,6 +129,7 @@ class LaporanController extends Controller
                 'qty' => $request->qty,
                 'order' => $request->order,
                 'description' => $des,
+                'source' => $request->source,
                 'created_by' => $request->created_by,
             ]
         );
@@ -161,6 +162,7 @@ class LaporanController extends Controller
             'qty' => 'required',
             'order' => 'required',
             'description' => 'required',
+            'source' => 'required',
         ]);
         $input = $request->all();
 

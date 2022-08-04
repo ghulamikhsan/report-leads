@@ -23,6 +23,7 @@ class Laporan extends Model
         'qty',
         'order',
         'description',
+        'source',
         'created_by',
     ];
 

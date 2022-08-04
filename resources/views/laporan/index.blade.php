@@ -53,6 +53,7 @@
                                                 <th>QTY</th>
                                                 <th>Pesanan</th>
                                                 <th>Keterangan</th>
+                                                <th>Sumber Chat Customer</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -149,6 +150,18 @@
                                                         class="form-control">
                                                 </select>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group">
+                                            <label>Pilih Sumber</label>
+                                            <select name="source" id="source" class="form-control">
+                                                <option disabled selected value>-</option>
+                                                <option value="Website Moko Garment">Website Moko Garment</option>
+                                                <option value="Iklan">Iklan</option>
+                                                <option value="Website Sentra Handuk">Website Sentra Handuk</option>
+                                                <option value="Tidak Diketahui">Tidak Diketahui</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -299,6 +312,10 @@
                         name: 'description'
                     },
                     {
+                        data: 'source',
+                        name: 'source'
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -373,6 +390,7 @@
                     $('input[name=order]').val(data.order);
                     $('input[name=qty]').val(data.qty);
                     $('input[name=description]').val(data.description);
+                    $('input[name=source]').val(data.source);
                     $('input[name=created_by]').val(data.created_by);
                 })
             });
