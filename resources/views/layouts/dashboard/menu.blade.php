@@ -81,6 +81,13 @@
                             </a>
                         </li>
                     </ul>
+                    <li class="nav-item">
+                        <a href="{{ route('ratio.index') }}"
+                            class="nav-link {{ Request::is('detail') ? 'active' : '' }}">
+                            <i class="fas fa-ad nav-icon"></i>
+                            <p>Rasio Iklan</p>
+                        </a>
+                    </li>
                 </li>
             @endif
             @if (Auth::user()->id != 1)

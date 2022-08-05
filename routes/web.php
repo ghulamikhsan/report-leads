@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth', 'dontback']], function () {
     route::resource('master', App\Http\Controllers\MasterController::class);
     route::resource('detail', App\Http\Controllers\DetailController::class);
     route::resource('dashboard', App\Http\Controllers\DashboardController::class);
+    route::resource('ratio', App\Http\Controllers\RatioController::class);
     route::get('detailtgl', [App\Http\Controllers\DetailController::class, 'indextgl'])->name('detailtgl');
     route::get('detailtgl/{detail}', [App\Http\Controllers\DetailController::class, 'showtgl'])->name('detailtgl.show');
     route::get('detailbln', [App\Http\Controllers\DetailController::class, 'indexbln'])->name('detailbln');

@@ -141,7 +141,8 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h2 class="card-title">Data Leads Bulan {{ $i_bulan }} {{ $tahun }}</h2>
+                                        <h2 class="card-title">Data Leads Bulan {{ $i_bulan }} {{ $tahun }}
+                                        </h2>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -178,6 +179,86 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                            </div>
+                            <hr width="100%" />
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Rasio Bulan {{ $i_bulan }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Rasio Iklan:Omset Moko Garment</h2>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <a class="btn btn-lg btn-icon waves-effect waves-light btn-info">
+                                            <i class="fas fa-percentage nav-icon"></i>
+                                        </a>
+                                        @foreach ($ratios1 as $ratio)
+                                            <h4 class="font-weight-normal pt-2 mb-1 float-md-right">
+                                                {{ ceil(($ratio->adv_budget / $ratio->turnover) * 100) }}%</h4>
+                                        @endforeach
+                                        </h4>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Rasio Iklan:Laba Moko Garment</h2>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <a class="btn btn-lg btn-icon waves-effect waves-light btn-info">
+                                            <i class="fas fa-percentage nav-icon"></i>
+                                        </a>
+                                        <h4 class="font-weight-normal pt-2 mb-1 float-md-right">
+                                            {{ ceil(($ratio->adv_budget / $ratio->profit) * 100) }}%
+                                        </h4>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Rasio Iklan:Omset Sentra Handuk</h2>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <a class="btn btn-lg btn-icon waves-effect waves-light btn-success">
+                                            <i class="fas fa-percentage nav-icon"></i>
+                                        </a>
+                                        @foreach ($ratios2 as $ratio)
+                                            <h4 class="font-weight-normal pt-2 mb-1 float-md-right">
+                                                {{ ceil(($ratio->adv_budget / $ratio->turnover) * 100) }}%</h4>
+                                        @endforeach
+                                        </h4>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Rasio Iklan:Laba Sentra Handuk</h2>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <a class="btn btn-lg btn-icon waves-effect waves-light btn-success">
+                                            <i class="fas fa-percentage nav-icon"></i>
+                                        </a>
+                                        <h4 class="font-weight-normal pt-2 mb-1 float-md-right">
+                                            {{ ceil(($ratio->adv_budget / $ratio->profit) * 100) }}%
+                                        </h4>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
@@ -353,8 +434,7 @@
 
 @section('css-tambahan')
     <link rel="stylesheet" href="{{ asset('cdn/datatables/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('cdn/datatables/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('cdn/datatables/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cdn/datatables/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 @endsection

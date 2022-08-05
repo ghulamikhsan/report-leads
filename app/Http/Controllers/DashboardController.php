@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\bulan;
 use App\Models\Customer;
 use App\Models\Laporan;
+use App\Models\Ratio;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -101,6 +102,10 @@ class DashboardController extends Controller
         ->pluck('id');
         // dd($chart_p_bulan_vira);
 
+        //perhitungan rasio
+        $ratios1 = Ratio::where('name', '=', 'Moko Garment')->whereMonth('date', $bulan)->get();
+        $ratios2 = Ratio::where('name', '=', 'Sentra Handuk')->whereMonth('date', $bulan)->get();
+
         return view('dashboard.index', compact('customer_counts',
         'customer_M_counts',
         'customer_d_counts',
@@ -129,6 +134,8 @@ class DashboardController extends Controller
         'm_chart_t_customer',
         'm_chart_tb_customer',
         'm_chart_p_bulan',
+        'ratios1',
+        'ratios2'
     ));
     }
 }

@@ -26,21 +26,21 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2 class="card-title">Management Customer</h2>
+                                    <h2 class="card-title">Management Rasio</h2>
                                     <a class="btn btn-outline-primary btn-sm waves-effect waves-light float-right"
-                                        href="javascript:void(0)" id="createNewCustomer"> Buat Customer Baru</a>
+                                        href="javascript:void(0)" id="createNewRatio"> Buat Rasio Iklan Baru</a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover data-table">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">
-                                                    No
-                                                </th>
-                                                <th>Nama</th>
-                                                <th>Nomor Whatsapp</th>
-                                                <th>Alamat</th>
+                                                <th>No</th>
+                                                <th>Nama Bisnis</th>
+                                                <th>Tanggal</th>
+                                                <th>Omset</th>
+                                                <th>Laba</th>
+                                                <th>Budget Iklan</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -56,28 +56,44 @@
                                                 <h4 class="modal-title" id="modelHeading"></h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form id="CustomerForm" name="CustomerForm" class="form-horizontal">
-                                                    <input type="hidden" name="Customer_id" id="Customer_id">
-                                                    <div class="form-group">
-                                                        <label for="name" class="col-sm-2 control-label">Nama</label>
-                                                        <div class="col-sm-12">
-                                                            <input type="text" class="form-control" id="name"
-                                                                name="name" placeholder="Masukan Nama" value=""
-                                                                maxlength="50" required="">
+                                                <form id="RatioForm" name="RatioForm" class="form-horizontal">
+                                                    <input type="hidden" name="Ratio_id" id="Ratio_id">
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-group">
+                                                            <label>Nama Bisnis</label>
+                                                            <select name="name" id="name" class="form-control">
+                                                                <option disabled selected value>-</option>
+                                                                <option value="Moko Garment">Moko Garment
+                                                                </option>
+                                                                <option value="Sentra Handuk">Sentra Handuk</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-group">
+                                                            <label>Tanggal</label>
+                                                            {!! Form::date('date', null, ['placeholder' => 'Tanggal', 'class' => 'form-control']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Nomor Whatsapp</label>
+                                                        <label class="col-sm-3 control-label">Omset</label>
                                                         <div class="col-sm-12">
-                                                            <input id="no_wa" name="no_wa" required=""
-                                                                placeholder="Nomor Whatsapp" class="form-control">
+                                                            <input id="turnover" name="turnover" required=""
+                                                                placeholder="Omset" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Alamat</label>
+                                                        <label class="col-sm-3 control-label">Laba</label>
                                                         <div class="col-sm-12">
-                                                            <input id="orign" name="orign" required=""
-                                                                placeholder="Alamat" class="form-control">
+                                                            <input id="profit" name="profit" required=""
+                                                                placeholder="Laba" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Budget Iklan</label>
+                                                        <div class="col-sm-12">
+                                                            <input id="adv_budget" name="adv_budget" required=""
+                                                                placeholder="Budget Iklan" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-offset-2 col-sm-10">
@@ -130,7 +146,7 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('customer.index') }}",
+                ajax: "{{ route('ratio.index') }}",
                 pageLength: 10,
                 lengthMenu: [5, 10, 20, 50, 100, 200, 500],
                 esponsive: true,
@@ -145,12 +161,23 @@
                         name: 'name'
                     },
                     {
-                        data: 'no_wa',
-                        name: 'no_wa'
+                        data: 'date',
+                        name: 'date'
                     },
                     {
-                        data: 'orign',
-                        name: 'orign'
+                        data: 'turnover',
+                        name: 'turnover',
+                        render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )
+                    },
+                    {
+                        data: 'profit',
+                        name: 'profit',
+                        render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )
+                    },
+                    {
+                        data: 'adv_budget',
+                        name: 'adv_budget',
+                        render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )
                     },
                     {
                         data: 'action',
@@ -161,24 +188,26 @@
                 ]
             });
 
-            $('#createNewCustomer').click(function() {
-                $('#saveBtn').val("create-Customer");
-                $('#Customer_id').val('');
-                $('#CustomerForm').trigger("reset");
-                $('#modelHeading').html("Tambah Customer");
+            $('#createNewRatio').click(function() {
+                $('#saveBtn').val("create-Ratio");
+                $('#Ratio_id').val('');
+                $('#RatioForm').trigger("reset");
+                $('#modelHeading').html("Tambah Ratio");
                 $('#ajaxModel').modal('show');
             });
 
             $('body').on('click', '.editItem', function() {
-                var Customer_id = $(this).data('id');
-                $.get("{{ route('customer.index') }}" + '/' + Customer_id + '/edit', function(data) {
+                var Ratio_id = $(this).data('id');
+                $.get("{{ route('ratio.index') }}" + '/' + Ratio_id + '/edit', function(data) {
                     $('#modelHeading').html("Edit Report");
-                    $('#saveBtn').val("edit-Customer");
+                    $('#saveBtn').val("edit-Ratio");
                     $('#ajaxModel').modal('show');
-                    $('#Customer_id').val(data.id);
+                    $('#Ratio_id').val(data.id);
                     $('#name').val(data.name);
-                    $('#no_wa').val(data.no_wa);
-                    $('#orign').val(data.orign);
+                    $('#date').val(data.date);
+                    $('#turnover').val(data.turnover);
+                    $('#profit').val(data.profit);
+                    $('#adv_budget').val(data.adv_budget);
                 })
             });
 
@@ -187,24 +216,24 @@
                 $(this).html('Sending..');
 
                 $.ajax({
-                    data: $('#CustomerForm').serialize(),
-                    url: "{{ route('customer.store') }}",
+                    data: $('#RatioForm').serialize(),
+                    url: "{{ route('ratio.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
                         if (data.success) {
                             swal.fire({
                                 icon: "success",
-                                title: "Customer Berhasil Ditambahkan",
+                                title: "Ratio Berhasil Ditambahkan",
                                 text: data.sucess
                             });
-                            $('#CustomerForm').trigger("reset");
+                            $('#RatioForm').trigger("reset");
                             $('#ajaxModel').modal('hide');
                             table.draw();
                         } else {
                             swal.fire({
                                 icon: "error",
-                                title: "Mohon Maaf Customer Gagal Ditambahkan",
+                                title: "Mohon Maaf Ratio Gagal Ditambahkan",
                                 text: data.success
                             });
                         }
@@ -217,12 +246,12 @@
             });
             $('body').on('click', '.deleteItem', function() {
 
-                var Customer_id = $(this).data("id");
+                var Ratio_id = $(this).data("id");
                 confirm("Are You sure want to delete !");
 
                 $.ajax({
                     type: "DELETE",
-                    url: "{{ route('customer.store') }}" + '/' + Customer_id,
+                    url: "{{ route('ratio.store') }}" + '/' + Ratio_id,
                     success: function(data) {
                         table.draw();
                     },
